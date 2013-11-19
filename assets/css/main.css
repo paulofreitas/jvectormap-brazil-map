@@ -1,0 +1,30 @@
+@import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700);
+
+body {
+    background: #00709a
+}
+
+#hovered-region,
+#clicked-region {
+    background: #01374d;
+    border: 1px solid #e5eabd;
+    color: #e4b045;
+    display: inline-block;
+    font: normal 10pt 'Ubuntu Mono';
+    margin-right: 3px;
+    padding: 4px 8px;
+    text-align: center;
+    width: 170px
+}
+
+#hovered-region span,
+#clicked-region span {
+    color: #e4e770;
+    font-weight: bold
+}
+
+#brazil-map {
+    margin: 10px auto;
+    height: 687px;
+    width: 780px
+}

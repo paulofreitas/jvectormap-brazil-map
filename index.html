@@ -1,88 +1,124 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title>jVectorMap: Brazil map</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <link rel="stylesheet" href="assets/css/main.css" type="text/css" media="screen" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" href="assets/css/main.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
     <script src="assets/js/jquery-1.10.2.min.js" type="text/javascript"></script>
-    <script src="assets/js/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-jvectormap-2.0.3.min.js" type="text/javascript"></script>
     <script src="assets/js/brazil.js" type="text/javascript"></script>
-  </head>
-  <body>
-    <div id="container">
-      <div id="hovered-region">LAST HOVERED REGION: <span>??</span></div>
-      <div id="clicked-region">LAST CLICKED REGION: <span>??</span></div>
-      <div id="brazil-map"></div>
-    </div>
-    <script type="text/javascript">
-      $(function () {
-          var map_settings = {
-              map: 'brazil',
-              zoomButtons: false,
-              zoomMax: 1,
-              regionStyle: {
-                  initial: {
-                      'fill-opacity': 0.9,
-                      stroke: '#000',
-                      'stroke-width': 100,
-                      'stroke-opacity': 1
-                  },
-                  hover: {
-                      fill: '#00709a'
-                  }
-              },
-              backgroundColor: '#00709a',
-              series: {
-                  regions: [{
-                      values: {
-                          // Região Norte
-                          ac: '#fff9c2',
-                          am: '#fff9c2',
-                          ap: '#fff9c2',
-                          pa: '#fff9c2',
-                          ro: '#fff9c2',
-                          rr: '#fff9c2',
-                          to: '#fff9c2',
-                          // Região Nordeste
-                          al: '#fcdeeb',
-                          ba: '#fcdeeb',
-                          ce: '#fcdeeb',
-                          ma: '#fcdeeb',
-                          pb: '#fcdeeb',
-                          pe: '#fcdeeb',
-                          pi: '#fcdeeb',
-                          rn: '#fcdeeb',
-                          se: '#fcdeeb',
-                          // Região Centro-Oeste
-                          df: '#feb83d',
-                          go: '#feb83d',
-                          ms: '#feb83d',
-                          mt: '#feb83d',
-                          // Região Sudeste
-                          es: '#e8ec9b',
-                          mg: '#e8ec9b',
-                          rj: '#e8ec9b',
-                          sp: '#e8ec9b',
-                          // Região Sul
-                          pr: '#fef56c',
-                          rs: '#fef56c',
-                          sc: '#fef56c'
-                      },
-                      attribute: 'fill'
-                  }]
-              },
-              container: $('#brazil-map'),
-              onRegionClick: function (event, code) {
-                  $('#clicked-region span').text(code);
-              },
-              onRegionOver: function (event, code) {
-                  $('#hovered-region span').text(code);
-              }
-          };
+</head>
+<body>
+<div id="container">
+    <div id="hovered-region">LAST HOVERED REGION: <span>??</span></div>
+    <div id="clicked-region">LAST CLICKED REGION: <span>??</span></div>
+    <div id="brazil-map"></div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var map_settings = {
+            map: 'brazil',
+            zoomButtons: false,
+            zoomMax: 1,
+            regionStyle: {
+                initial: {
+                    'fill-opacity': 0.9,
+                    stroke: '#000',
+                    'stroke-width': 100,
+                    'stroke-opacity': 1
+                },
+                hover: {
+                    fill: '#ff6b00'
+                }
+            },
+            backgroundColor: '#00709a',
+            regionLabelStyle: {
+                initial: {
+                    fill: '#ffffff',
+                    'font-size': '14'
+                },
+                hover: {
+                    fill: 'black'
+                }
+            },
+            labels: {
+                regions: {
+                    render: function (code) {
+                        return code;
+                    },
+                    offsets: function (code) {
+                        return {
+                            'PI': [5000, 3000],
+                            'RR': [2000, 0],
+                            'AP': [2000, 0],
+                            'RN': [1000, -1000],
+                            'PB': [2000, 0],
+                            'AL': [1000, 0],
+                            'MG': [4000, 0],
+                            'ES': [1000, 0],
+                            'RJ': [1000, 2000],
+                            'SC': [3000, -1000],
+                            'RS': [3000, -2000],
+                            'TO': [0, 4000],
+                            'PA': [0, 4000],
+                            'MA': [0, -2000],
+                            'BA': [1000, -5000]
+                        }[code];
+                    }
+                }
+            },
+            series: {
+                regions: [{
+                    values: {
+                        // Região Norte
+                        AC: '#99DC08',
+                        AM: '#99DC08',
+                        AP: '#99DC08',
+                        PA: '#99DC08',
+                        RO: '#99DC08',
+                        RR: '#99DC08',
+                        TO: '#99DC08',
+                        // Região Nordeste
+                        AL: '#549AFF',
+                        BA: '#549AFF',
+                        CE: '#549AFF',
+                        MA: '#549AFF',
+                        PB: '#549AFF',
+                        PE: '#549AFF',
+                        PI: '#549AFF',
+                        RN: '#549AFF',
+                        SE: '#549AFF',
+                        // Região Centro-Oeste
+                        DF: '#FFD526',
+                        GO: '#FFD526',
+                        MS: '#FFD526',
+                        MT: '#FFD526',
+                        // Região Sudeste
+                        ES: '#FF0000',
+                        MG: '#FF0000',
+                        RJ: '#FF0000',
+                        SP: '#FF0000',
+                        // Região Sul
+                        PR: '#FF9A00',
+                        RS: '#FF9A00',
+                        SC: '#FF9A00'
+                    },
+                    attribute: 'fill'
+                }]
+            },
+            container: $('#brazil-map'),
+            onRegionClick: function (event, code) {
+                $('#clicked-region span').text(code);
+            },
+            onRegionOver: function (event, code) {
+                $('#hovered-region span').text(code);
+            }
+        };
 
-          map = new jvm.WorldMap($.extend(true, {}, map_settings));
-      });
-    </script>
-  </body>
+        map = new jvm.Map($.extend(true, {}, map_settings));
+    });
+</script>
+</body>
 </html>
